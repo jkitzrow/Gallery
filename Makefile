@@ -1,14 +1,10 @@
-MAIN_CLASS = cs1302.gallery.GalleryDriver
-
 run: compile
-	export MAVEN_OPTS=-Dprism.order=sw; \
-	mvn exec:java -Dexec.mainClass="$(MAIN_CLASS)"
+	make compile
+	java -cp jars/gson-2.8.5.jar:bin/ cs1302.gallery.GalleryDriver
 
 compile:
-	mvn compile
+	javac -cp jars/gson-2.8.5.jar:bin/ -d bin/ src/cs1302/gallery/*.java
 
 clean:
-	mvn clean
+	rm bin/cs1302/gallery/*.class
 
-doc:
-	mvn javadoc:javadoc
