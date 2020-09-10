@@ -1,5 +1,4 @@
 run: compile
-	make compile
 	java -cp jars/gson-2.8.5.jar:bin/ cs1302.gallery.GalleryDriver
 
 compile:
