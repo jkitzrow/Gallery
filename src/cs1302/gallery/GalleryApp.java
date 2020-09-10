@@ -37,7 +37,7 @@ public class GalleryApp extends Application {
         
         Scene scene = new Scene(pane);
         stage.setResizable(false);
-        stage.setTitle("GalleryApp!");
+        stage.setTitle("Gallery");
         stage.setScene(scene);
         stage.sizeToScene();
         stage.show();
