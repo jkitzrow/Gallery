@@ -23,14 +23,14 @@ public class Progress extends HBox {
         progressBar = new ProgressBar();
         progressBar.setProgress(0);
 
-        //Creats Text
+        //Creates Text
         Text provider = new Text("Images provided courtesy of iTunes");
 
         //Edits properties
         this.setSpacing(5);
         this.setAlignment(Pos.CENTER_LEFT);
         
-        //Add it to the hbox
+        //Add it to the HBox
         this.getChildren().addAll(progressBar, provider);
     }
 
