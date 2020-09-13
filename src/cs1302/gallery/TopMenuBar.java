@@ -7,6 +7,7 @@ import javafx.event.EventHandler;
 import javafx.event.ActionEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.Modality;
 import javafx.scene.Scene;
@@ -28,31 +29,45 @@ public class TopMenuBar extends MenuBar {
     /** MenuItem for the about button */
     private MenuItem about;
 
+    /** MenuItem for the themes button */
+    private Menu themes;
+    /** MenuItem for the light theme */
+    private MenuItem light;
+    /** MenuItem for the dark theme */
+    private MenuItem dark;
+
     /**
      * Default constructor which creates all the 
      * menu tabs and their respectible options.
      * @param stage the main stage which the program runs
+     * @param scene the main scene which contains everything
      */
-    public TopMenuBar(Stage stage) {
+    public TopMenuBar(Stage stage, Scene scene) {
         super();
 
         //Creates new menus to use
         file = new Menu("File");
         help = new Menu("Help");
+        themes = new Menu("Themes");
 
         //Create menu items
         exit = new MenuItem("Exit");
         about = new MenuItem("About");
+        light = new MenuItem("Light");
+        dark = new MenuItem("Dark");
 
         //Set action handlers
         exit.setOnAction(this.getExitMenuHandler(stage));
         about.setOnAction(this.getAboutMenuHandler());
+        light.setOnAction(this.getLightThemeHandler(scene));
+        dark.setOnAction(this.getDarkThemeHandler(scene));
 
         //Adds the menu items to menu category
         file.getItems().add(exit);
         help.getItems().add(about);
+        themes.getItems().addAll(light, dark);
 
-        this.getMenus().addAll(file, help);
+        this.getMenus().addAll(file, help, themes);
     }
 
     /**
@@ -108,5 +123,21 @@ public class TopMenuBar extends MenuBar {
         };
 
         return aboutHandler;
+    }
+
+    private EventHandler<ActionEvent> getDarkThemeHandler(Scene scene) {
+        EventHandler<ActionEvent> darkHandler = b -> {
+            scene.getStylesheets().add("file:css/darkmode.css");
+        };
+
+        return darkHandler;
+    }
+
+    private EventHandler<ActionEvent> getLightThemeHandler(Scene scene) {
+        EventHandler<ActionEvent> lightHandler = b -> {
+            scene.getStylesheets().remove("file:css/darkmode.css");
+        };
+
+        return lightHandler;
     }
 }

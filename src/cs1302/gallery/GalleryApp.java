@@ -23,9 +23,10 @@ public class GalleryApp extends Application {
     @Override
     public void start(Stage stage) {
         VBox pane = new VBox();
+        Scene scene = new Scene(pane);
 
         //Create the different parts of the scene
-        menuBar = new TopMenuBar(stage);
+        menuBar = new TopMenuBar(stage, scene);
         progress = new Progress();
         grid = new ImageGrid();
         searchBar = new SearchBar(grid, progress);
@@ -35,7 +36,7 @@ public class GalleryApp extends Application {
         //Add parts to the container
         pane.getChildren().addAll(menuBar, searchBar, grid, progress);
         
-        Scene scene = new Scene(pane);
+        //scene.getStylesheets().add("file:css/darkmode.css");
         stage.setResizable(false);
         stage.setTitle("Gallery");
         stage.setScene(scene);
