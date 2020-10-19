@@ -7,4 +7,5 @@ The goal of this project was to familiarize myself with Javafx and practice inte
 ## Example
 
 Below is what the program looks like.
+
 ![Example image](/resources/example.png)
